@@ -61,6 +61,18 @@ This is a **demonstration application** that:
 
 ---
 
+## Scoring Logic
+
+Longevity uses a transparent, rule-based scoring system inspired by common clinical reasoning.  
+The final risk score is a weighted combination of:
+
+- **Voice symptoms (60%)**: Each symptom identified from the conversation contributes points based on severity (e.g., persistent cough +30, blood in sputum +40, heavy smoking +50, weight loss +25). The voice symptom score is normalized to a maximum of 180 points.  
+- **Clinical findings (40%)**: Structured data from medical reports contributes additional points (e.g., lesion size +20–30, lymph node involvement +25, age +5–10). The clinical findings score is normalized to a maximum of 70 points.  
+
+The combined formula is:  Final Score = `( VoiceScore / 180 ) * 0.6 + ( ClinicalScore / 70 ) * 0.4`
+
+---
+
 ## Security Considerations
 
 - API keys are stored in-browser; not secure for production  
